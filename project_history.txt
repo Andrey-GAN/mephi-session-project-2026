@@ -1,0 +1,263 @@
+    1  nmcli --help
+    2  ip link show
+    3  ip addr show enp0s3
+    4  nmcli -c
+    5  nmcli c
+    6  nmcli c modify enp0s3 ipv.4addresses 192.168.1.100/24
+    7  nmcli c modify enp0s3 ipv4.addresses 192.168.1.100/24
+    8  nmcli c modify enp0s3 ipv4.gateway 192.168.1.1
+    9  nmcli c modify enp0s3 ipv4.dns 8.8.8.8
+   10  nmcli c modify enp0s3 ipv4.method manual
+   11  ip addr show enp0s3
+   12  nmcli c down enp0s3
+   13  nmcli c up enp0s3
+   14  ip addr show enp0s3
+   15  ping -c4 192.168.1.1
+   16  ping -c4 8.8.8.8
+   17  ping -c4 yandex.com
+   18  hostnamectl set-hostname mephi-2026.domain.local
+   19  hostnamectl
+   20  ping -c 4 8.8.8.8 > /tmp/network_check.txt
+   21  ping -c 4 192.168.1.1 >> /tmp/network_check.txt
+   22  ip route
+   23  ip route >> /tmp/network_check.txt
+   24  vim /tmp/network_check.txt
+   25  dnf install nginx
+   26  dnf install tcpdump
+   27  dnf install libcap-ng-utils
+   28  dnf download tcpdump --destdir=/tmp
+   29  dnf remove tcpdump
+   30  ls -la /tmp
+   31  rpm -i tcpdump*.rpm
+   32  rpm -i /tmp/tcpdump*.rpm
+   33  rpm -q nginx tcpdump libcap-ng-utils
+   34  lsblk
+   35  fdisk /dev/sdb
+   36  lsblk
+   37  fdisk /dev/sdb
+   38  lsblk
+   39  mkfs.ext4 -L MEPHI_DATA /dev/sdb1
+   40  blkid /dev/sdb1
+   41  dir
+   42  cd /
+   43  dir
+   44  mkdir data
+   45  dir
+   46  cd data
+   47  mkdir mephi-web
+   48  mount /dev/sdb1 /data/mephi-web
+   49  lsblk
+   50  cat /etc/fstab
+   51  vim /etc/fstab
+   52  cat /etc/fstab
+   53  systemctl daemon-reload
+   54  lsblk
+   55  df
+   56  du -h
+   57  df -H
+   58  mount
+   59  mount -a
+   60  mount
+   61  df -h
+   62  systemctl start ngnix
+   63  systemctl start nginx
+   64  systemctl status nginx
+   65  journalctl -u ngnix --since "5 minutes ago" > /tmp/ngnix_recent_logs.txt
+   66  journalctl -u nginx --since "5 minutes ago" > /tmp/nginx_recent_logs.txt
+   67  cat /tmp/nginx_recent_logs.txt
+   68  systemctl stop nginx
+   69  systemctl status nginx
+   70  systemctl start nginx
+   71  systemctl status nginx
+   72  journalctl -u nginx --since "5 minutes ago" > /tmp/nginx_recent_logs.txt
+   73  cat /tmp/nginx_recent_logs.txt
+   74  cd /
+   75  cd temp
+   76  cd tmp
+   77  ls -la temp
+   78  ls -la /tmp
+   79  rm /tmp/ngnix_recent_logs.txt
+   80  ls -la tmp
+   81  ls -la /tmp
+   82  groupadd mephi-devs
+   83  useradd -m -G mephi-devs mephi-admin
+   84  passwd mephi-admin
+   85  chown mephi-admin:mephi-devs /data/mephi-web
+   86  chmod 2775 /data/mephi-web
+   87  ls -ld /data/mephi-web
+   88  id mephi-admin
+   89  passwd mephi-admin
+   90  whoami
+   91  id mephi-admin
+   92  grep mephi-admin /etc/shadow
+   93  su mephi-admin
+   94  echo "mephi-admin:P@ssw0rd2026" | chpasswd
+   95  echo "P@ssw0rd2026" | su - mephi-admin -c "whoami"
+   96  history > /tmp/project_history.txt
+   97  cat /tmp/project_history.txt
+   98  getenforce
+   99  semanage fcontext -a -t httpd_sys_content_t "/data/mephi-web(/.*)?"
+  100  restorecon -Rv /data/mephi-web
+  101  vim /etc/nginx.conf
+  102  vim /etc/nginx/nginx.conf
+  103  cat /etc/nginx/nginx.conf
+  104  ngnix -t
+  105  nginx -t
+  106  systemctl restart nginx
+  107  systmectl status nginx
+  108  systemctl status nginx
+  109  setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
+  110  getcap /usr/sbin/tcpdump
+  111  su mephi-admin
+  112  touch /etc/ssh/denied_users
+  113  echo "root" > /etc/ssh/denied_users
+  114  cat /etc/ssh/denied_users
+  115  cat /etc/pam.d/system-auth
+  116  grep "authselect opt-out" /etc/pam.d/system-auth
+  117  ls -la /etc/pam.d/system-auth
+  118  authselect opt-out
+  119  ls -la /etc/pam.d/system-auth
+  120  cat /etc/ssh/denied_users
+  121  grep "authselect opt-out" /etc/pam.d/system-auth
+  122  ls -la /etc/pam.d/system-auth
+  123  vim  /etc/pam.d/system-auth
+  124  cat /etc/pam.d/system-auth
+  125  cat /etc/pam.d/sshd
+  126  ls -la /etc/pam.d/sshd
+  127  vim /etc/pam.d/sshd
+  128  head -5 /etc/pam.d/sshd
+  129  cat /etc/ssh/denied_users
+  130  systemctl restart sshd
+  131  ssh root@localhost
+  132  history > /tmp/root_history.txt
+  133  cat /tmp/root_history.txt
+  134  history > /home/mephi-admin/root_history.txt
+  135  cat /home/mephi-admin/root_history.txt
+  136  -u mephi-admin cat /home/mephi-admin/root_history.txt | head -5
+  137  su mephi-admin cat /home/mephi-admin/root_history.txt | head -5
+  138  su mephi-admin
+  139  ssh root@localhost
+  140  su - mephi-admin
+  141* 
+  142  vim /etc/pam.d/sshd
+  143  vim /etc/ssh/sshd_config
+  144  ssh root@localhost
+  145  systemctl restart sshd
+  146  ssh root@localhost
+  147  tail -f /var/log/auth.log
+  148  tail -f /var/log/secure
+  149  vim /etc/pam.d/sshd
+  150  vim /etc/pam.d/system-auth
+  151  ssh root@localhost
+  152  systemctl restart sshd
+  153  ssh root@localhost
+  154  tail -f /var/log/secure
+  155  vim /etc/pam.d/system-auth
+  156  vim /etc/pam.d/sshd
+  157  ssh root@localhost
+  158  cat /etc/ssh/denied_users
+  159  tail -3 /var/log/secure
+  160  vim /etc/pam.d/sshd
+  161* 
+  162  ssh root@localhost
+  163  vim /etc/pam.d/sshd
+  164  systemctl restart sshd
+  165  ssh root@localhost
+  166  grep "pam_listfile" /etc/pam.d/sshd
+  167  vim /etc/pam.d/login
+  168  vim /etc/pam.d/sshd
+  169  vim /etc/ssh/sshd_config
+  170  systemctl restart sshd
+  171  ssh root@localhost
+  172  sshd -T | grep permitrootLogin
+  173  sshd -T | grep usepam
+  174  vim /etc/ssh/sshd_config
+  175  sshd -T | grep PermitrootLogin
+  176  sshd -T | grep PermitRootLogin
+  177  sshd -T | grep -E "permitrootlogin|authencation"
+  178  vim /etc/ssh/sshd_config
+  179  systemctl restart sshd
+  180  ssh root@localhost
+  181  vim /etc/ssh/sshd_config
+  182  systemctl restart sshd
+  183  ssh root@localhost
+  184  grep -r "PermitRootLogin" /etc/ssh
+  185  history > /home/mephi-admin/root_history.txt
+  186  cat /home/mephi-admin/root_history.txt
+  187  vim /home/mephi-admin/root_history.txt
+  188  grep -r "PermitRootLogin" /etc/ssh
+  189  vim /etc/ssh/sshd_config.d/01-permitrootlogin.conf
+  190  grep -r "PermitRootLogin" /etc/ssh
+  191  systemctl restart sshd
+  192  ssh root@localhost
+  193  passwd -l root
+  194  passwd -S root
+  195  ssh root@localhost
+  196  systemctl restart sshd
+  197* 
+  198  history > /home/mephi-admin/root_history.txt
+  199  su - mephi-admin
+  200  netstat -tlnp | grep :80
+  201  firewall-cmd --list-all
+  202  firewall-cmd --permanent --add-service=http
+  203  firewall-cmd reload
+  204  firewall-cmd --reload
+  205  history > /home/mephi-admin/root_history.txt
+  206  su - mephi-admin
+  207  journalctl -u nginx --since "5 minutes ago" > /home/mephi-admin/nginx_recent_logs.txt
+  208  cat /home/mephi-admin/nginx_recent_logs.txt
+  209  journalctl -u nginx --since "5 minutes ago" > /home/mephi-admin/nginx_recent_logs.txt
+  210  cat /home/mephi-admin/nginx_recent_logs.txt
+  211  nginx restart
+  212  vim /etc/nginx/nginx.conf
+  213  ls -la /var/log/nginx/access.log
+  214  ls -la /var/log/nginx/
+  215  vim /etc/nginx/nginx.conf
+  216  chown -R nginx:nginx /var/log/nginx/
+  217  ls -la /var/log/nginx/
+  218  chown -R nginx:nginx /var/log/nginx
+  219  ls -la /var/log/nginx/
+  220  chown nginx:nginx /var/log/nginx
+  221  ls -ld /var/log/nginx
+  222  systemctl reload nginx
+  223  curl http://localhost
+  224  journalctl -u nginx --since "5 minutes ago" > /home/mephi-admin/nginx_recent_logs.txt
+  225  cat /home/mephi-admin/nginx_recent_logs.txt
+  226  journalctl -u nginx --since "5 minutes ago" > /home/mephi-admin/nginx_recent_logs.txt
+  227  cat /home/mephi-admin/nginx_recent_logs.txt
+  228  tail -5 /var/log/nginx/access.log
+  229  journalctl -u nginx --since "5 minutes ago" > /home/mephi-admin/nginx_recent_logs.txt
+  230  cat /home/mephi-admin/nginx_recent_logs.txt
+  231  history > /home/mephi-admin/root_history.txt
+cat /etc/fstab
+cp /etc/fstab ~/fstab.txt
+getenforce
+getenforce ~/selinux_status.txt
+getenforce > ~/selinux_status.txt
+ls -Zd /data/mephi-web
+ls -Zd /data/mephi-web > ~/file_contexts.txt
+getcap /usr/sbin/tcpdump
+getcap /usr/sbin/tcpdump > ~/tcpdump_capabilities.txt
+cat ~/tcpdump_capabilities.txt
+stat /data/mephi-web
+stat /data/mephi-web > ~/permossions.txt
+stat /data/mephi-web > ~/permissions.txt
+id mephi-admin
+id mephi-admin > ~/users_groups.txt
+getent group mephi-devs >> ~/users_groups.txt
+cat ~/users_groups.txt
+curl -s http://192.168.1.100
+curl -s http://192.168.1.100 > ~/curl_output.txt
+dir
+cd /home
+dir
+cd mephi-admin
+dir
+cp root_history.txt > ~/project_history.txt
+cp ~/root_history.txt > ~/project_history.txt
+cp ~/root_history.txt ~/project_history.txt
+history >> ~/project_history.txt
+cat ~/project_history.txt
+cat ~/root_history.txt
+cp ~/root_history.txt ~/project_history.txt
+history -a  ~/project_history.txt
